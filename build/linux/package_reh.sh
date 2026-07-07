@@ -116,7 +116,7 @@ EOF
 fi
 
 for i in {1..5}; do # try 5 times
-  npm ci --prefix build && break
+  npm ci --prefix build --arch="$npm_config_arch" && break
   if [[ $i == 5 ]]; then
     echo "Npm install failed too many times" >&2
     exit 1
@@ -154,7 +154,7 @@ echo "+ ${HOME}/.gyp/include.gypi"
 cat "${HOME}/.gyp/include.gypi" || true
 
 for i in {1..5}; do # try 5 times
-  npm ci && break
+  npm ci --arch="$npm_config_arch" && break
   if [[ $i == 5 ]]; then
     echo "Npm install failed too many times" >&2
     exit 1
